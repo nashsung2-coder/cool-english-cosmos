@@ -1,69 +1,103 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Zap, Sword, Backpack } from "lucide-react";
+import { Zap, Sword, Backpack, Heart, Sparkles, AlertCircle, CheckCircle2, Award } from "lucide-react";
 
 /**
- * GamePage - 遊戲模式 (Game Mode)
+ * GamePage - 遊戲模式 (Game Mode) - 優化版（寵物學習連動與陪伴）
  * 
- * Design Philosophy: Deep Space Minimalism with Gamification
- * - Pet display on left side
- * - Star map with six knowledge planets
- * - Adventure expeditions with battles
- * - Pet battles arena
- * - Treasure backpack
+ * Design Philosophy: Deep Space Minimalism with Gamification & Emotional Bonding
+ * - Pet growth directly linked to English learning tasks completed
+ * - Interactive pet companionship (feeding, petting, dialog, mood status)
+ * - Real-time learning reminders ("完成一個聽力任務讓寵物升級！")
+ * - Achievement system driven by learning milestones
  */
 
 export default function GamePage() {
-  const [activeView, setActiveView] = useState<"map" | "expedition" | "arena" | "backpack">("map");
+  const [activeView, setActiveView] = useState<"pet" | "map" | "expedition" | "arena" | "backpack">("pet");
   const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
+  const [petExp, setPetExp] = useState(750);
+  const [petLevel, setPetLevel] = useState(15);
+  const [petMood, setPetMood] = useState("開心興奮 ✨");
+  const [feedCount, setFeedCount] = useState(3);
+
+  const handleFeed = () => {
+    if (feedCount > 0) {
+      setFeedCount(feedCount - 1);
+      setPetExp((prev) => prev + 100);
+      setPetMood("飽足幸福 💖");
+    }
+  };
 
   const planets = [
-    { id: "listening", name: "聽力星", color: "#60A5FA", icon: "👂" },
-    { id: "speaking", name: "口說星", color: "#FFD166", icon: "🎤" },
-    { id: "reading", name: "閱讀星", color: "#5CE0B8", icon: "📖" },
-    { id: "writing", name: "寫作星", color: "#F07B6B", icon: "✏️" },
-    { id: "vocabulary", name: "字彙星", color: "#A977F4", icon: "📚" },
-    { id: "grammar", name: "文法星", color: "#5CC9A7", icon: "⚙️" },
+    { id: "listening", name: "聽力星", color: "#60A5FA", icon: "👂", desc: "完成聽力任務獲得音波晶石" },
+    { id: "speaking", name: "口說星", color: "#FFD166", icon: "🎤", desc: "完成口說評測獲得回音羽毛" },
+    { id: "reading", name: "閱讀星", color: "#5CE0B8", icon: "📖", desc: "完成分級閱讀獲得知識古卷" },
+    { id: "writing", name: "寫作星", color: "#F07B6B", icon: "✏️", desc: "完成寫作偵錯獲得星光墨水" },
+    { id: "vocabulary", name: "字彙星", color: "#A977F4", icon: "📚", desc: "完成字彙測驗獲得記憶水晶" },
+    { id: "grammar", name: "文法星", color: "#5CC9A7", icon: "⚙️", desc: "完成文法挑戰獲得秩序之輪" },
   ];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Top Status Bar */}
-      <div className="sticky top-0 z-40 border-b border-white/6 bg-background/80 backdrop-cosmic">
-        <div className="container py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold">星辰冒險</h1>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-accent" />
-              <span className="font-mono">能量: 1200 / 1500</span>
+      {/* Top Status Bar with Learning Reminder */}
+      <div className="sticky top-0 z-40 border-b border-white/6 bg-background/90 backdrop-cosmic">
+        <div className="container py-3 flex flex-col md:flex-row items-center justify-between gap-2">
+          <div className="flex items-center gap-3">
+            <span className="text-xl font-bold bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">
+              星辰冒險 (遊戲指揮艙)
+            </span>
+            <div className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 animate-pulse">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>【學習提醒】完成今日 1 個聽力任務，寵物將獲得雙倍經驗與進化碎片！</span>
             </div>
-            <div className="text-sm text-muted-foreground">排名: Top 100</div>
+          </div>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 text-sm font-mono">
+              <Zap className="w-4 h-4 text-accent" />
+              <span>能量: 1250 / 1500</span>
+            </div>
+            <div className="text-xs px-2.5 py-1 rounded-full bg-white/10 text-muted-foreground font-mono">
+              賽季排名: Top 88
+            </div>
           </div>
         </div>
       </div>
 
       <div className="container py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Left: Pet Display */}
+          {/* Left: Companion Pet Interactive Display */}
           <div className="lg:col-span-1">
-            <PetDisplay />
+            <CompanionPetCard
+              petLevel={petLevel}
+              petExp={petExp}
+              petMood={petMood}
+              feedCount={feedCount}
+              onFeed={handleFeed}
+            />
           </div>
 
-          {/* Right: Main Content */}
+          {/* Right: Main Game Views */}
           <div className="lg:col-span-3">
             <Tabs value={activeView} onValueChange={(v) => setActiveView(v as any)}>
-              <TabsList className="grid w-full grid-cols-4 bg-white/5 mb-6">
-                <TabsTrigger value="map">星圖</TabsTrigger>
-                <TabsTrigger value="expedition">遠征</TabsTrigger>
-                <TabsTrigger value="arena">競技場</TabsTrigger>
-                <TabsTrigger value="backpack">背包</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-5 bg-white/5 p-1 rounded-xl">
+                <TabsTrigger value="pet">🐉 寵物養成</TabsTrigger>
+                <TabsTrigger value="map">🗺️ 星際地圖</TabsTrigger>
+                <TabsTrigger value="expedition">⚔️ 知識遠征</TabsTrigger>
+                <TabsTrigger value="arena">🏆 競技場</TabsTrigger>
+                <TabsTrigger value="backpack">🎒 背包寶庫</TabsTrigger>
               </TabsList>
 
-              {/* Star Map View */}
+              {/* Pet Training & Companion Tab */}
+              <TabsContent value="pet" className="mt-6 space-y-6">
+                <PetBondingSection petLevel={petLevel} />
+              </TabsContent>
+
+              {/* Star Map Tab */}
               <TabsContent value="map" className="mt-6">
                 <div className="glass-card p-8">
-                  <h2 className="text-xl font-semibold mb-8">六顆知識星球</h2>
+                  <h2 className="text-xl font-semibold mb-2">六顆知識星球與學習連動</h2>
+                  <p className="text-sm text-muted-foreground mb-6">點擊星球即可前往對應的 Cool English 官方學習資源，完成後寵物將自動獲得經驗升級！</p>
                   <StarMap
                     planets={planets}
                     selectedPlanet={selectedPlanet}
@@ -72,17 +106,17 @@ export default function GamePage() {
                 </div>
               </TabsContent>
 
-              {/* Expedition View */}
+              {/* Expedition Tab */}
               <TabsContent value="expedition" className="mt-6">
                 <ExpeditionView planets={planets} selectedPlanet={selectedPlanet} />
               </TabsContent>
 
-              {/* Arena View */}
+              {/* Arena Tab */}
               <TabsContent value="arena" className="mt-6">
                 <ArenaView />
               </TabsContent>
 
-              {/* Backpack View */}
+              {/* Backpack Tab */}
               <TabsContent value="backpack" className="mt-6">
                 <BackpackView />
               </TabsContent>
@@ -95,52 +129,147 @@ export default function GamePage() {
 }
 
 /**
- * PetDisplay - 寵物展示區
+ * CompanionPetCard - 寵物陪伴與養成卡片
  */
-function PetDisplay() {
+function CompanionPetCard({
+  petLevel,
+  petExp,
+  petMood,
+  feedCount,
+  onFeed,
+}: {
+  petLevel: number;
+  petExp: number;
+  petMood: string;
+  feedCount: number;
+  onFeed: () => void;
+}) {
   return (
-    <div className="glass-card p-6 text-center">
-      <div className="text-6xl mb-4">🐉</div>
-      <h3 className="text-lg font-bold mb-1">星龍</h3>
-      <div className="text-sm text-accent mb-4">Lv. 15</div>
+    <div className="glass-card p-6 text-center space-y-4 border-t-4 border-t-amber-400">
+      {/* Pet Avatar with Animation */}
+      <div className="relative inline-block py-4">
+        <div className="text-7xl animate-float">🐉</div>
+        <span className="absolute top-2 right-0 px-2 py-0.5 rounded-full text-xs font-bold bg-accent text-accent-foreground font-mono shadow-lg">
+          Lv.{petLevel}
+        </span>
+      </div>
 
-      {/* HP and MP bars */}
-      <div className="space-y-3 mb-6">
-        <div>
-          <div className="text-xs text-muted-foreground mb-1">HP</div>
-          <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-red-500 to-red-600"
-              style={{ width: "75%" }}
-            />
-          </div>
+      <div>
+        <h3 className="text-lg font-bold text-white mb-1">星光龍 · 艾克</h3>
+        <p className="text-xs text-amber-300 italic mb-2">“主人，今天也要一起背單字、探索宇宙喔！”</p>
+        <div className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-muted-foreground">
+          心情：<span className="text-white font-medium">{petMood}</span>
         </div>
-        <div>
-          <div className="text-xs text-muted-foreground mb-1">MP</div>
-          <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-blue-500 to-blue-600"
-              style={{ width: "60%" }}
-            />
-          </div>
+      </div>
+
+      {/* Experience Bar */}
+      <div className="space-y-1.5 text-left">
+        <div className="flex justify-between text-xs">
+          <span className="text-muted-foreground">升級進度</span>
+          <span className="text-accent font-mono">{petExp} / 1000 XP</span>
+        </div>
+        <div className="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-gradient-to-r from-amber-400 to-orange-500 rounded-full transition-all duration-500"
+            style={{ width: `${(petExp / 1000) * 100}%` }}
+          />
         </div>
       </div>
 
       {/* Action Buttons */}
-      <div className="space-y-2">
-        <Button className="w-full bg-accent text-accent-foreground text-sm">
-          餵食
+      <div className="space-y-2 pt-2">
+        <Button
+          onClick={onFeed}
+          disabled={feedCount === 0}
+          className="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-black font-semibold text-sm hover:opacity-90"
+        >
+          🍎 餵食學習果實 ({feedCount}/3)
         </Button>
-        <Button variant="outline" className="w-full text-sm">
-          進化
+        <Button variant="outline" className="w-full text-xs">
+          💬 與寵物對話互動
         </Button>
+      </div>
+
+      <div className="text-xs text-muted-foreground pt-2 border-t border-white/6">
+        💡 提示：前往專攻區完成英語任務可獲得更多學習果實！
       </div>
     </div>
   );
 }
 
 /**
- * StarMap - 環形星圖展示
+ * PetBondingSection - 寵物養成與陪伴詳細面板
+ */
+function PetBondingSection({ petLevel }: { petLevel: number }) {
+  return (
+    <div className="space-y-6">
+      {/* Companion Story & Quotes */}
+      <div className="glass-card p-6 bg-gradient-to-br from-amber-500/10 to-transparent border-amber-500/20">
+        <div className="flex items-center gap-3 mb-3">
+          <Sparkles className="w-5 h-5 text-amber-400" />
+          <h3 className="text-lg font-semibold text-white">寵物陪伴與英語學習成長日誌</h3>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          你的寵物「艾克」會隨著你的英語學習打卡而成長。每完成一個聽力、閱讀或寫作任務，艾克就會吸收知識能量，解鎖全新的外觀翅膀與魔法技能！
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+            <div className="text-xs text-muted-foreground mb-1">當前外觀階段</div>
+            <div className="font-semibold text-amber-300">幼龍期 (星能羽翼)</div>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+            <div className="text-xs text-muted-foreground mb-1">下一次進化條件</div>
+            <div className="font-semibold text-white">達到 Lv.20 且完成 5 篇閱讀任務</div>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+            <div className="text-xs text-muted-foreground mb-1">陪伴總時數</div>
+            <div className="font-semibold text-emerald-400">48.5 小時</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Learning Reminder Checklist */}
+      <div className="glass-card p-6">
+        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+          <AlertCircle className="w-5 h-5 text-amber-400" />
+          <span>今日寵物成長任務（完成即可餵食寵物）</span>
+        </h3>
+        <div className="space-y-3">
+          {[
+            { title: "完成 1 個聽力主題影片練習", resource: "生活主題影片", url: "https://www.coolenglish.edu.tw/course/view.php?id=866", done: true },
+            { title: "完成 1 篇 VOA 閱讀測驗", resource: "全球新鮮事", url: "https://www.coolenglish.edu.tw/course/view.php?id=489", done: false },
+            { title: "完成 1 次寫作偵錯練習", resource: "酷英AI寫作偵錯", url: "https://www.coolenglish.edu.tw/course/view.php?id=841", done: false },
+          ].map((task, idx) => (
+            <div key={idx} className="flex items-center justify-between p-4 rounded-lg bg-white/3 border border-white/6 hover:bg-white/6 transition-all">
+              <div className="flex items-center gap-3">
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${task.done ? "bg-emerald-500 text-white" : "bg-white/10 text-muted-foreground"}`}>
+                  {task.done ? "✓" : idx + 1}
+                </div>
+                <div>
+                  <div className={`text-sm font-medium ${task.done ? "line-through text-muted-foreground" : "text-white"}`}>
+                    {task.title}
+                  </div>
+                  <div className="text-xs text-amber-300">獎勵：寵物經驗 +150，獲 1 顆學習果實</div>
+                </div>
+              </div>
+              <a
+                href={task.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-lg bg-accent text-accent-foreground text-xs font-medium hover:opacity-90 transition-all"
+              >
+                前往學習 ↗
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * StarMap - 星圖與星球連結
  */
 function StarMap({
   planets,
@@ -152,114 +281,23 @@ function StarMap({
   onSelectPlanet: (id: string) => void;
 }) {
   return (
-    <div className="w-full h-96 flex items-center justify-center">
-      <svg viewBox="0 0 400 400" className="w-full max-w-sm">
-        {/* Orbits */}
-        <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <circle cx="200" cy="200" r="100" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-
-        {/* Center star */}
-        <circle cx="200" cy="200" r="8" fill="#F0C45A" />
-
-        {/* Planets */}
-        {planets.map((planet, idx) => {
-          const angle = (idx * 360) / planets.length;
-          const rad = (angle * Math.PI) / 180;
-          const x = 200 + 110 * Math.cos(rad - Math.PI / 2);
-          const y = 200 + 110 * Math.sin(rad - Math.PI / 2);
-          const isSelected = selectedPlanet === planet.id;
-
-          return (
-            <g key={planet.id} onClick={() => onSelectPlanet(planet.id)} className="cursor-pointer">
-              {/* Orbit line */}
-              <line
-                x1="200"
-                y1="200"
-                x2={x}
-                y2={y}
-                stroke="rgba(255,255,255,0.1)"
-                strokeWidth="1"
-                strokeDasharray="2,2"
-              />
-
-              {/* Planet circle */}
-              <circle
-                cx={x}
-                cy={y}
-                r={isSelected ? 18 : 12}
-                fill={planet.color}
-                opacity={isSelected ? 1 : 0.7}
-                className="transition-all duration-300"
-              />
-
-              {/* Planet label */}
-              <text
-                x={x}
-                y={y + 30}
-                textAnchor="middle"
-                fill="rgba(232, 236, 241, 0.8)"
-                fontSize="12"
-                className="pointer-events-none"
-              >
-                {planet.name}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
-
-/**
- * ExpeditionView - 知識遠征
- */
-function ExpeditionView({ planets, selectedPlanet }: { planets: any[]; selectedPlanet: string | null }) {
-  const planet = planets.find((p) => p.id === selectedPlanet);
-
-  if (!selectedPlanet || !planet) {
-    return (
-      <div className="glass-card p-8 text-center text-muted-foreground">
-        請先從星圖中選擇一顆星球
-      </div>
-    );
-  }
-
-  const stages = [
-    { id: 1, name: "基礎關卡", type: "normal", difficulty: "⭐", rewards: "經驗 +50" },
-    { id: 2, name: "進階關卡", type: "normal", difficulty: "⭐⭐", rewards: "經驗 +100" },
-    { id: 3, name: "挑戰關卡", type: "challenge", difficulty: "⭐⭐⭐", rewards: "經驗 +200" },
-    { id: 4, name: "Boss 戰", type: "boss", difficulty: "⭐⭐⭐⭐", rewards: "經驗 +500" },
-  ];
-
-  return (
-    <div className="space-y-4">
-      <div className="glass-card p-4 border-l-4" style={{ borderLeftColor: planet.color }}>
-        <h3 className="text-lg font-semibold mb-2">{planet.name} 遠征</h3>
-        <p className="text-sm text-muted-foreground">選擇一個關卡開始冒險</p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {stages.map((stage) => (
+    <div className="w-full flex flex-col items-center justify-center py-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+        {planets.map((planet) => (
           <div
-            key={stage.id}
-            className="glass-card p-4 hover:bg-white/6 transition-all cursor-pointer"
+            key={planet.id}
+            onClick={() => onSelectPlanet(planet.id)}
+            className="glass-card p-5 hover:bg-white/6 transition-all cursor-pointer border-l-4"
+            style={{ borderLeftColor: planet.color }}
           >
-            <div className="flex items-start justify-between mb-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-3xl">{planet.icon}</span>
               <div>
-                <h4 className="font-semibold">{stage.name}</h4>
-                <div className="text-sm text-muted-foreground mt-1">{stage.difficulty}</div>
-              </div>
-              <div className="text-xs bg-accent/20 text-accent px-2 py-1 rounded">
-                {stage.type === "boss" ? "Boss" : stage.type === "challenge" ? "挑戰" : "普通"}
+                <h4 className="font-semibold text-white">{planet.name}</h4>
+                <span className="text-xs text-accent">點擊查看關卡</span>
               </div>
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-muted-foreground">{stage.rewards}</span>
-              <Button size="sm" className="bg-accent text-accent-foreground">
-                出發
-              </Button>
-            </div>
+            <p className="text-xs text-muted-foreground">{planet.desc}</p>
           </div>
         ))}
       </div>
@@ -268,63 +306,66 @@ function ExpeditionView({ planets, selectedPlanet }: { planets: any[]; selectedP
 }
 
 /**
- * ArenaView - 寵物競技場
+ * ExpeditionView - 知識遠征
+ */
+function ExpeditionView({ planets, selectedPlanet }: { planets: any[]; selectedPlanet: string | null }) {
+  const planet = planets.find((p) => p.id === selectedPlanet) || planets[0];
+
+  const stages = [
+    { id: 1, name: "初階航道：基礎對話", url: "https://www.coolenglish.edu.tw/course/view.php?id=866", difficulty: "⭐", rewards: "經驗 +100" },
+    { id: 2, name: "中階航道：情境聽力", url: "https://www.coolenglish.edu.tw/course/view.php?id=90", difficulty: "⭐⭐", rewards: "經驗 +200" },
+    { id: 3, name: "挑戰航道：新聞快譯", url: "https://www.coolenglish.edu.tw/course/view.php?id=4", difficulty: "⭐⭐⭐", rewards: "經驗 +400" },
+  ];
+
+  return (
+    <div className="space-y-6">
+      <div className="glass-card p-6 border-l-4" style={{ borderLeftColor: planet.color }}>
+        <h3 className="text-xl font-semibold mb-2">{planet.name} 遠征任務</h3>
+        <p className="text-sm text-muted-foreground mb-4">{planet.desc}</p>
+        <span className="text-xs px-2.5 py-1 rounded bg-accent/20 text-accent font-mono">
+          當前選中星球
+        </span>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {stages.map((stage) => (
+          <div key={stage.id} className="glass-card p-5 flex flex-col justify-between hover:bg-white/6 transition-all">
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-xs font-mono text-amber-300">{stage.difficulty}</span>
+                <span className="text-xs text-muted-foreground">{stage.rewards}</span>
+              </div>
+              <h4 className="font-semibold text-sm mb-3 text-white">{stage.name}</h4>
+            </div>
+            <a
+              href={stage.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-center py-2.5 rounded-lg bg-accent text-accent-foreground text-xs font-medium hover:opacity-90 transition-all"
+            >
+              出發遠征 ↗
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * ArenaView - 競技場
  */
 function ArenaView() {
   return (
-    <div className="space-y-6">
-      <div className="glass-card p-6">
-        <h3 className="text-lg font-semibold mb-4">寵物競技場</h3>
-
-        {/* Season Info */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="bg-white/3 border border-white/6 rounded-lg p-4">
-            <div className="text-xs text-muted-foreground mb-1">賽季排名</div>
-            <div className="text-2xl font-bold">Top 100</div>
-          </div>
-          <div className="bg-white/3 border border-white/6 rounded-lg p-4">
-            <div className="text-xs text-muted-foreground mb-1">本週勝數</div>
-            <div className="text-2xl font-bold">12 勝</div>
-          </div>
-        </div>
-
-        {/* Match Button */}
-        <Button className="w-full bg-accent text-accent-foreground py-6 text-lg font-semibold">
-          <Sword className="w-5 h-5 mr-2" />
-          尋找對手 (消耗 50 能量)
-        </Button>
-      </div>
-
-      {/* Match History */}
-      <div className="glass-card p-6">
-        <h3 className="text-lg font-semibold mb-4">最近比賽</h3>
-        <div className="space-y-3">
-          {[
-            { opponent: "小明", result: "勝利", time: "2小時前" },
-            { opponent: "小紅", result: "失敗", time: "5小時前" },
-            { opponent: "小王", result: "勝利", time: "1天前" },
-          ].map((match, idx) => (
-            <div
-              key={idx}
-              className="flex items-center justify-between p-3 rounded-lg bg-white/3 border border-white/6"
-            >
-              <div>
-                <div className="font-medium">{match.opponent}</div>
-                <div className="text-xs text-muted-foreground">{match.time}</div>
-              </div>
-              <div
-                className={`px-3 py-1 rounded-lg text-sm font-medium ${
-                  match.result === "勝利"
-                    ? "bg-green-500/20 text-green-400"
-                    : "bg-red-500/20 text-red-400"
-                }`}
-              >
-                {match.result}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className="glass-card p-8 text-center space-y-4">
+      <div className="text-5xl mb-2">⚔️</div>
+      <h3 className="text-xl font-bold">星際寵物競技場</h3>
+      <p className="text-sm text-muted-foreground max-w-md mx-auto">
+        使用你在 Cool English 學習累積的單字與文法知識，在限時對戰中擊敗對手，贏取賽季積分與稀有裝備碎片！
+      </p>
+      <Button className="bg-accent text-accent-foreground font-semibold px-8 py-3 mt-4">
+        開始匹配對手
+      </Button>
     </div>
   );
 }
@@ -333,61 +374,21 @@ function ArenaView() {
  * BackpackView - 背包寶庫
  */
 function BackpackView() {
-  const items = [
-    { id: 1, name: "經驗加倍卡", rarity: "rare", quantity: 3 },
-    { id: 2, name: "能量恢復藥", rarity: "common", quantity: 12 },
-    { id: 3, name: "傳說碎片", rarity: "legendary", quantity: 1 },
-  ];
-
   return (
-    <div className="space-y-6">
-      <Tabs defaultValue="consumables" className="w-full">
-        <TabsList className="grid w-full grid-cols-4 bg-white/5">
-          <TabsTrigger value="consumables">消耗道具</TabsTrigger>
-          <TabsTrigger value="equipment">裝備碎片</TabsTrigger>
-          <TabsTrigger value="skins">寵物外觀</TabsTrigger>
-          <TabsTrigger value="evolution">進化樹</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="consumables" className="mt-6">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {items.map((item) => (
-              <div
-                key={item.id}
-                className={`p-4 rounded-lg border text-center cursor-pointer transition-all hover:scale-105 ${
-                  item.rarity === "legendary"
-                    ? "bg-yellow-500/10 border-yellow-500/50"
-                    : item.rarity === "rare"
-                      ? "bg-purple-500/10 border-purple-500/50"
-                      : "bg-white/5 border-white/10"
-                }`}
-              >
-                <div className="text-3xl mb-2">🎁</div>
-                <div className="text-sm font-medium">{item.name}</div>
-                <div className="text-xs text-muted-foreground mt-1">x{item.quantity}</div>
-              </div>
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="equipment" className="mt-6">
-          <div className="glass-card p-6 text-center text-muted-foreground">
-            裝備合成功能開發中
-          </div>
-        </TabsContent>
-
-        <TabsContent value="skins" className="mt-6">
-          <div className="glass-card p-6 text-center text-muted-foreground">
-            寵物外觀解鎖功能開發中
-          </div>
-        </TabsContent>
-
-        <TabsContent value="evolution" className="mt-6">
-          <div className="glass-card p-6 text-center text-muted-foreground">
-            進化樹功能開發中
-          </div>
-        </TabsContent>
-      </Tabs>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {[
+        { name: "學習果實", qty: 5, icon: "🍎", desc: "增加寵物 100 XP" },
+        { name: "雙倍經驗卡", qty: 2, icon: "⚡", desc: "1小時內經驗加倍" },
+        { name: "星能羽翼碎片", qty: 8, icon: "✨", desc: "寵物進化材料" },
+        { name: "記憶水晶", qty: 12, icon: "💎", desc: "解鎖高級題庫" },
+      ].map((item, idx) => (
+        <div key={idx} className="glass-card p-5 text-center hover:bg-white/6 transition-all">
+          <div className="text-4xl mb-2">{item.icon}</div>
+          <h4 className="font-semibold text-sm text-white mb-1">{item.name}</h4>
+          <p className="text-xs text-muted-foreground mb-3">{item.desc}</p>
+          <span className="text-xs px-2 py-0.5 rounded bg-white/10 font-mono text-accent">數量：{item.qty}</span>
+        </div>
+      ))}
     </div>
   );
 }
