@@ -1,0 +1,24 @@
+name = "cool-english-cosmos"
+type = "javascript"
+account_id = ""
+workers_dev = true
+
+[build]
+command = "pnpm build"
+cwd = "./"
+
+[build.upload]
+format = "service-worker"
+
+[env.production]
+name = "cool-english-cosmos-prod"
+
+[[build.upload.rules]]
+type = "CompiledContentType"
+globs = ["**/*.wasm"]
+fallthrough = true
+
+[[build.upload.rules]]
+type = "Text"
+globs = ["**/*.txt", "**/*.html"]
+fallthrough = true

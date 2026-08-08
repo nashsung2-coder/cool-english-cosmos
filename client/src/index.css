@@ -192,11 +192,21 @@
 
   /* Glass morphism card */
   .glass-card {
-    @apply bg-white/3 border border-white/6 rounded-lg backdrop-blur-sm;
+    @apply rounded-lg backdrop-blur-sm;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .glass-card-hover {
-    @apply glass-card transition-all duration-300 hover:bg-white/6 hover:-translate-y-0.5;
+    @apply transition-all duration-300;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    @apply rounded-lg backdrop-blur-sm;
+  }
+
+  .glass-card-hover:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    @apply -translate-y-0.5;
   }
 
   /* Cosmic button styles */
