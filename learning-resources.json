@@ -1,0 +1,476 @@
+{
+  "resources": {
+    "elementary_listening": {
+      "categoryId": 6,
+      "categoryName": "國小區—聽力",
+      "categoryUrl": "https://www.coolenglish.edu.tw/course/index.php?categoryid=6",
+      "courses": [
+        {
+          "id": 216,
+          "name": "動畫歷險記",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=216",
+          "level": "A1",
+          "description": "本區精選適合國小程度的生動動畫影片，讓你能開心看動畫、學會話。適合已有基本單字基礎、想學習英語會話的你。"
+        },
+        {
+          "id": 80,
+          "name": "互動式學習影片",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=80",
+          "level": "Pre A1-A1",
+          "description": "本區提供動畫影片，以特定主題或特定句型使用為題，分成基礎區和進階區，適合想學習日常生活英語的你。"
+        },
+        {
+          "id": 90,
+          "name": "情境動畫聽講",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=90",
+          "level": "A1",
+          "description": "本區提供英語對話動畫影片，皆以一個特定日常情境為主軸，適合從基礎開始、學習英語日常對話的你。"
+        },
+        {
+          "id": 855,
+          "name": "生活主題影片(適合高年級進階)",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=855",
+          "level": "Pre A1-A1",
+          "description": "本區提供各種高年級進階的實用英文生活對話影片，搭配字幕幫助學生練習聽力，且幫助學生在真實遇到相關情境時能夠有辦法應對。"
+        },
+        {
+          "id": 87,
+          "name": "幼兒歌曲樂園",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=87",
+          "level": "Pre A1-A1",
+          "description": "提供豐富的英語幼兒歌曲，適合想用輕鬆歡樂氛圍、讓家中幼兒提早接觸英語的您。"
+        },
+        {
+          "id": 774,
+          "name": "語音合成工具",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=774",
+          "level": "All",
+          "description": "只需簡單幾個步驟，就能輕鬆將文章轉成語音檔，作為聽力或口說練習都很好用喔！"
+        },
+        {
+          "id": 488,
+          "name": "Scholastic Watch & Learn Library 專區",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=488",
+          "level": "A2-B1",
+          "description": "在找豐富多樣的主題式教育影片，以及各式輔助學習教材嗎？趕快進來Scholastic Watch & Learn Library 看看吧！"
+        },
+        {
+          "id": 314,
+          "name": "ICRT News Lunchbox",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=314",
+          "level": "A1-A2",
+          "description": "午餐時間想來點不一樣的? 來聽聽今天的新聞大小事吧!"
+        }
+      ]
+    },
+    "junior_listening": {
+      "categoryId": 7,
+      "categoryName": "國中區—聽力",
+      "categoryUrl": "https://www.coolenglish.edu.tw/course/index.php?categoryid=7",
+      "courses": [
+        {
+          "id": 866,
+          "name": "生活主題影片",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=866",
+          "level": "A2-B1",
+          "description": "本區提供各種實用英文生活對話影片，搭配字幕幫助學生練習聽力，且幫助學生在真實遇到相關情境時能夠有辦法應對。"
+        },
+        {
+          "id": 617,
+          "name": "遊台灣學英文",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=617",
+          "level": "A2-B2",
+          "description": "你會用英文介紹台灣嗎？跟著影片從北玩到南，你將成為台灣旅遊達人！"
+        },
+        {
+          "id": 91,
+          "name": "情境動畫聽講",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=91",
+          "level": "A2-B1",
+          "description": "本區提供動畫影片，分為部編本英語教科書、選修課本、情境式對話聽力練習，依照冊數及難易度排列。適合想學英語日常對話、練習聽力的你。"
+        },
+        {
+          "id": 45,
+          "name": "生活中的英文",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=45",
+          "level": "A2",
+          "description": "本區提供美國之音 (Voice of America, VOA) 網站的英語教學影片 Let's Learn English。適合想學習英語日常對話的你。"
+        },
+        {
+          "id": 441,
+          "name": "看卡通學英文",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=441",
+          "level": "B1",
+          "description": "看卡通也能學英文？！本區提供各式主題的卡通短片，並提供全英及中英字幕的版本。適合想挑戰聽力能力、培養語感的你。"
+        },
+        {
+          "id": 317,
+          "name": "電影FUN映中",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=317",
+          "level": "B1",
+          "description": "提供美國之音 (Voice of America, VOA) 網站英語教學影片 English @ the Movies。適合喜歡電影，想學習美式用語、練習聽力、培養語感的你。"
+        },
+        {
+          "id": 85,
+          "name": "互動式學習影片",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=85",
+          "level": "A2",
+          "description": "本區提供動畫影片，每篇皆有特定主題或特定句型並且依據速度及有無字幕分類。適合想學習日常生活英語、挑戰聽力能力的你。"
+        },
+        {
+          "id": 285,
+          "name": "一分鐘學俚語",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=285",
+          "level": "A2-B1",
+          "description": "這些英文單字你都認得，合在一起卻不懂這句話的意思? 那你該來多學習一點英文的俚語了！"
+        },
+        {
+          "id": 777,
+          "name": "語音合成工具",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=777",
+          "level": "All",
+          "description": "只需簡單幾個步驟，就能輕鬆將文章轉成語音檔，作為聽力或口說練習都很好用喔！"
+        },
+        {
+          "id": 490,
+          "name": "Scholastic Watch & Learn Library 專區",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=490",
+          "level": "A2-B2",
+          "description": "在找豐富多樣的主題式教育影片，以及各式輔助學習教材嗎？趕快進來Scholastic Watch & Learn Library 看看吧！"
+        },
+        {
+          "id": 313,
+          "name": "ICRT News Lunchbox",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=313",
+          "level": "A2-B1",
+          "description": "午餐時間想來點不一樣的? 來聽聽今天的新聞大小事吧!"
+        }
+      ]
+    },
+    "senior_listening": {
+      "categoryId": 8,
+      "categoryName": "普高區—聽力",
+      "categoryUrl": "https://www.coolenglish.edu.tw/course/index.php?categoryid=8",
+      "courses": [
+        {
+          "id": 286,
+          "name": "歡樂電影城",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=286",
+          "level": "B1-B2",
+          "description": "輕鬆看電影學也能學到英文！搭配中英文字幕，能學到英文單字，同時訓練聽力！"
+        },
+        {
+          "id": 355,
+          "name": "看電影學英文",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=355",
+          "level": "B1",
+          "description": "不知道該看什麼電影好？一分鐘經典熱門電影簡介，順便學一個英語片語！"
+        },
+        {
+          "id": 568,
+          "name": "遊臺灣學英文",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=568",
+          "level": "B1-B2",
+          "description": "你會用英文介紹台灣嗎？跟著影片從北玩到南，你將成為台灣旅遊達人！"
+        },
+        {
+          "id": 4,
+          "name": "一分鐘聽新聞",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=4",
+          "level": "B1",
+          "description": "每天一分鐘，輕鬆掌握世界脈動！"
+        },
+        {
+          "id": 100,
+          "name": "聽力模擬試題",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=100",
+          "level": "B1",
+          "description": "參照高中英語聽力測驗試題示例命題，精準測驗你的聽力能力！"
+        },
+        {
+          "id": 767,
+          "name": "酷英語音合成工具",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=767",
+          "level": "All",
+          "description": "只需簡單幾個步驟，就能輕鬆將文章轉成語音檔，作為聽力或口說練習都很好用喔！"
+        },
+        {
+          "id": 99,
+          "name": "俚語大集合",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=99",
+          "level": "A2-B1",
+          "description": "蒐羅道地英文俚語，一分鐘影片認識一則俚語的意思及用法。"
+        },
+        {
+          "id": 487,
+          "name": "Scholastic ScienceFlix",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=487",
+          "level": "B1-C2",
+          "description": "6大科學領域，70多個科學主題，搭配分級文章、影片及職涯介紹，帶你加深加廣自然數學課所學！等你來探索！"
+        }
+      ]
+    },
+    "senior_speaking": {
+      "categoryId": 9,
+      "categoryName": "普高區—口說",
+      "categoryUrl": "https://www.coolenglish.edu.tw/course/index.php?categoryid=9",
+      "courses": [
+        {
+          "id": 943,
+          "name": "酷英篇章口說評測系統",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=943",
+          "level": "All",
+          "description": "酷英篇章口說評測系統可讓使用者貼上自選內容或由AI產生文章。朗讀文章後，系統將進行口說評測，評比發音表現。"
+        },
+        {
+          "id": 770,
+          "name": "酷英AI英語聊天機器人",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=770",
+          "level": "All",
+          "description": "酷英AI英語聊天機器人 (CoolE Bot) 是一款具語音辨識和語音合成功能的AI英語聊天機器人。在CoolE Bot的多元宇宙裡，你想聊什麼都沒問題！"
+        },
+        {
+          "id": 21,
+          "name": "Let's Learn English 2",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=21",
+          "level": "A2-B1",
+          "description": "中級英語教學影片，附上逐字稿講義複習，課後還有Quiz練習！"
+        },
+        {
+          "id": 183,
+          "name": "Let's Learn English 1",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=183",
+          "level": "A1",
+          "description": "初級英語教學影片，附上逐字稿講義複習，課後還有Quiz練習！"
+        },
+        {
+          "id": 339,
+          "name": "英語道地說",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=339",
+          "level": "Pre A1-A1",
+          "description": "YouTube頻道American English精選口說影片，開口說英文絕非難事！"
+        }
+      ]
+    },
+    "senior_reading": {
+      "categoryId": 10,
+      "categoryName": "普高區—閱讀",
+      "categoryUrl": "https://www.coolenglish.edu.tw/course/index.php?categoryid=10",
+      "courses": [
+        {
+          "id": 1134,
+          "name": "Scholastic Everyday Book Box",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=1134",
+          "level": "B1-B2",
+          "description": "Everyday Book Box是一系列鼓勵大量閱讀、廣泛閱讀的藍思(Lexile)分類分級圖書。本區收錄了50本精選小說以及非小說類圖書。"
+        },
+        {
+          "id": 709,
+          "name": "Focus Taiwan 英語新聞",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=709",
+          "level": "B1-B2",
+          "description": "本區選自 Focus Taiwan 英語新聞文章，涵蓋臺灣國內外相關報導，推薦給想關心時事的你。"
+        },
+        {
+          "id": 708,
+          "name": "酷英TCM讀本",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=708",
+          "level": "B1-B2",
+          "description": "本區精選美國 TCM 出版的主題式讀物，涵蓋科學、文化、藝術等多元領域，適合搭配 ESP 學習，提升英文閱讀與詞彙能力。"
+        },
+        {
+          "id": 409,
+          "name": "神奇悅讀之旅",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=409",
+          "level": "A2-B1",
+          "description": "精選主題多元、插圖精美的英文繪本，提供全英版本 ( 搭配生難字的中文註釋) ，均附全文朗讀功能。"
+        },
+        {
+          "id": 5,
+          "name": "世界新聞知多少(中級)",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=5",
+          "level": "B1",
+          "description": "世界趣聞讓你知！"
+        },
+        {
+          "id": 1523,
+          "name": "ReadAlong課外讀本",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=1523",
+          "level": "A2-B1",
+          "description": "跟著讀本一起唸! 可練習朗讀的外掛讀本專區。"
+        },
+        {
+          "id": 6,
+          "name": "學測閱讀模擬試題",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=6",
+          "level": "B1-B2",
+          "description": "學測閱讀模擬試題，一回試題內含一篇文意選填及四篇閱讀測驗供練習。"
+        },
+        {
+          "id": 489,
+          "name": "全球新鮮事",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=489",
+          "level": "B1",
+          "description": "選自VOA新聞文章，主題多元涵蓋奇人軼事、人權議題等。另提供生難字註解及閱讀測驗，推薦給想增進閱讀能力的你。"
+        },
+        {
+          "id": 190,
+          "name": "看漫畫學英文",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=190",
+          "level": "A2-B1",
+          "description": "本區提供生動活潑的真人英語配音漫畫，讓你在閱讀漫畫時也能培養語感練習聽力！"
+        },
+        {
+          "id": 676,
+          "name": "American English 讀本專區",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=676",
+          "level": "B1-C2",
+          "description": "由American English網站所提供的讀本，大部分文本皆為美國著名文學作品，作家的寫作手法是這些讀本較難閱讀的原因。"
+        }
+      ]
+    },
+    "senior_writing": {
+      "categoryId": 11,
+      "categoryName": "普高區—寫作與翻譯",
+      "categoryUrl": "https://www.coolenglish.edu.tw/course/index.php?categoryid=11",
+      "courses": [
+        {
+          "id": 841,
+          "name": "酷英AI寫作偵錯工具",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=841",
+          "level": "All",
+          "description": "AI寫作偵錯工具為你揪出文章中的文法錯誤，並提供寫作上的建議。"
+        },
+        {
+          "id": 79,
+          "name": "翻譯新手入門",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=79",
+          "level": "A2-B1",
+          "description": "高中常用句型講解，還有多元練習題型，包含選擇、重組、填空及翻譯等題型。"
+        },
+        {
+          "id": 105,
+          "name": "寫作修煉手冊",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=105",
+          "level": "A2-B1",
+          "description": "想要寫出好文章就得先學習有邏輯、架構的表達。寫作修煉手冊帶你從基礎到進階，一步一步寫出好文章！"
+        },
+        {
+          "id": 1061,
+          "name": "篇章結構與重組練習",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=1061",
+          "level": "A2-B1",
+          "description": "以段落重組、段落填空選擇、連接詞/介系詞練習三種題型，訓練學生對英文文章的理解判斷、篇章結構的組織概念，以及連接詞、介系詞的活用。"
+        },
+        {
+          "id": 192,
+          "name": "文法偵錯系統",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=192",
+          "level": "All",
+          "description": "提供簡便的文法檢查，讓學生能夠檢查自己有沒有犯下常見錯誤。"
+        },
+        {
+          "id": 842,
+          "name": "多益寫作評估工具",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=842",
+          "level": "B1-B2",
+          "description": "多益寫作評估工具將根據多益寫作的評分標準，為你的文章評分並提供寫作分析及整體建議。"
+        },
+        {
+          "id": 391,
+          "name": "語料金銀島",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=391",
+          "level": "B1-C2",
+          "description": "如果想更了解語言的奧秘，來語料金銀島尋寶吧！這裡的豐富資源能讓你的英文能力更上一層樓。"
+        }
+      ]
+    },
+    "senior_vocabulary": {
+      "categoryId": 12,
+      "categoryName": "普高區—字彙",
+      "categoryUrl": "https://www.coolenglish.edu.tw/course/index.php?categoryid=12",
+      "courses": [
+        {
+          "id": 9,
+          "name": "詞彙題",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=9",
+          "level": "B1",
+          "description": "仿學測題型，透過互動式的線上練習測驗題，加以熟悉字彙，讓學生在大考時也能得心應手。"
+        },
+        {
+          "id": 333,
+          "name": "詞彙量測驗",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=333",
+          "level": "B1-C2",
+          "description": "透過單字字義選擇題測驗，檢視自身單字詞彙量。"
+        },
+        {
+          "id": 11,
+          "name": "搭配詞",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=11",
+          "level": "B1-B2",
+          "description": "依大考中心公布之詞彙分級表分為六個難度。透過大量練習，熟悉常見字詞的搭配，避免詞不達意的窘境。"
+        },
+        {
+          "id": 10,
+          "name": "綜合測驗",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=10",
+          "level": "B1",
+          "description": "學測克漏字模擬題，分成五大主題，每主題各五回供練習。"
+        },
+        {
+          "id": 8,
+          "name": "新聞快譯通",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=8",
+          "level": "B1-B2",
+          "description": "一分鐘新聞學一個新聞常用字！透過新聞情境認識單字用法，無須死記！"
+        },
+        {
+          "id": 274,
+          "name": "字典攻略祕笈",
+          "url": "https://www.coolenglish.edu.tw/course/view.php?id=274",
+          "level": "B1",
+          "description": "To do a good job, an artisan needs the best tools. 學會正確使用字典，是語言學習的重要基本功！"
+        }
+      ]
+    }
+  },
+  "skillDimensions": {
+    "listening": {
+      "name": "聽力",
+      "icon": "ear",
+      "color": "#60A5FA",
+      "description": "培養英語聽力理解能力"
+    },
+    "speaking": {
+      "name": "口說",
+      "icon": "mic",
+      "color": "#FFD166",
+      "description": "提升英語口語表達能力"
+    },
+    "reading": {
+      "name": "閱讀",
+      "icon": "book",
+      "color": "#5CE0B8",
+      "description": "增進英語閱讀理解能力"
+    },
+    "writing": {
+      "name": "寫作",
+      "icon": "pen",
+      "color": "#F07B6B",
+      "description": "強化英語寫作表達能力"
+    },
+    "vocabulary": {
+      "name": "字彙",
+      "icon": "grid",
+      "color": "#A977F4",
+      "description": "擴充英語詞彙量"
+    },
+    "grammar": {
+      "name": "文法",
+      "icon": "code",
+      "color": "#5CC9A7",
+      "description": "掌握英語文法規則"
+    }
+  }
+}
