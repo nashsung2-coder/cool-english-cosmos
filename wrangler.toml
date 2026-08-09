@@ -8,9 +8,6 @@ name = "cool-english-cosmos-prod"
 command = "pnpm build"
 cwd = "./"
 
-[build.upload]
-format = "service-worker"
-
 [assets]
 directory = "dist/public"
 binding = "ASSETS"
