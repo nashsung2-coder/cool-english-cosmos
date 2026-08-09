@@ -1,7 +1,6 @@
 name = "cool-english-cosmos"
-compatibility_date = "2026-08-09"
+compatibility_date = "2024-09-01"
 
-# Cloudflare Pages specific configuration
-# Note: Build settings are usually managed in the Cloudflare Dashboard, 
-# but providing them here for local wrangler pages commands.
-pages_build_output_dir = "dist/public"
+# Use the [assets] configuration which is compatible with 'wrangler deploy'
+[assets]
+directory = "./dist/public"
